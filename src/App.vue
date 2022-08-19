@@ -1,28 +1,32 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <AddTag @sendTag="alert($event.target.value)" />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import AddTag from "./components/AddTag.vue";
 export default {
-  name: "App",
-  components: {
-    HelloWorld,
+  data: function () {
+    return {
+      tag: "",
+    };
   },
+  components: { AddTag },
+  // created() {
+  //   EventBus.$on("sendTag", (data) => {
+  //     this.tag = data;
+  //     alert(this.tag);
+  //   });
+  // },
 };
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  color: #9ab7ef;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 </style>
