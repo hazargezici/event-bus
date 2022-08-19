@@ -1,11 +1,12 @@
 <template>
   <div>
-    <AddTag @sendTag="alert($event.target.value)" />
+    <AddTag />
   </div>
 </template>
 
 <script>
 import AddTag from "./components/AddTag.vue";
+import EventBus from "./components/event-bus";
 export default {
   data: function () {
     return {
@@ -13,12 +14,12 @@ export default {
     };
   },
   components: { AddTag },
-  // created() {
-  //   EventBus.$on("sendTag", (data) => {
-  //     this.tag = data;
-  //     alert(this.tag);
-  //   });
-  // },
+  created() {
+    EventBus.$on("sendTag", (data) => {
+      this.tag = data;
+      alert(this.tag);
+    });
+  },
 };
 </script>
 
